@@ -21,6 +21,7 @@ class _CartelPState extends State<CartelP> {
   }
 }
 
+// ignore: non_constant_identifier_names
 Widget CartelBB() {
   return Stack(
     children: <Widget>[
@@ -91,6 +92,7 @@ Widget textos() {
   );
 }
 
+// ignore: non_constant_identifier_names
 Widget Botones() {
   return Padding(
     padding: EdgeInsets.symmetric(vertical: 8.0),
