@@ -33,8 +33,8 @@ class _ItemredondoState extends State<Itemredondo> {
           ),
         ]),
         SizedBox(
-        width: 15.0,
-      ),
+          width: 15.0,
+        ),
       ],
     );
   }

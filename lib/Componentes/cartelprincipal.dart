@@ -92,49 +92,40 @@ Widget textos() {
 }
 
 Widget Botones() {
-  return Padding( 
+  return Padding(
     padding: EdgeInsets.symmetric(vertical: 8.0),
-  child:Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Column(children: <Widget>[
-        Icon(Icons.add, color: Colors.white),
-        Text(
-          'Mi lista',
-          style: TextStyle(
-            color:Colors.white,
-            fontSize: 10.0
-          ),
-        )
-      ]),
-      SizedBox(
-        width: 20.0,
-      ),
-      FlatButton.icon(
-        onPressed: () {},
-        color: Colors.white,
-        icon: Icon(Icons.play_arrow_rounded, color: Colors.black),
-        label: Text('Reproducir',
-            style: TextStyle(color: Colors.black)),
-      ),
-      SizedBox(
-        width: 20.0,
-      ),
-      Column(
-        children: <Widget>[
-         Icon(Icons.info_outline, color: Colors.white),
-      Text(
-          'Información',
-          style: TextStyle(
-            color:Colors.white,
-            fontSize: 10.0
-          ),
-        )
-
-        ],
-      ),
-      
-    ],
-  ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Column(children: <Widget>[
+          Icon(Icons.add, color: Colors.white),
+          Text(
+            'Mi lista',
+            style: TextStyle(color: Colors.white, fontSize: 10.0),
+          )
+        ]),
+        SizedBox(
+          width: 20.0,
+        ),
+        FlatButton.icon(
+          onPressed: () {},
+          color: Colors.white,
+          icon: Icon(Icons.play_arrow_rounded, color: Colors.black),
+          label: Text('Reproducir', style: TextStyle(color: Colors.black)),
+        ),
+        SizedBox(
+          width: 20.0,
+        ),
+        Column(
+          children: <Widget>[
+            Icon(Icons.info_outline, color: Colors.white),
+            Text(
+              'Información',
+              style: TextStyle(color: Colors.white, fontSize: 10.0),
+            )
+          ],
+        ),
+      ],
+    ),
   );
 }
