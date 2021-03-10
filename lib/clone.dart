@@ -39,8 +39,6 @@ class _CloneState extends State<Clone> {
                 padding: EdgeInsets.symmetric(vertical: 5.0),
               ),
               Avances('Comedias', Itemcuadrado(), 10),
-
-              // Itemcuadrado()
             ],
           );
         },
