@@ -1,3 +1,4 @@
+import 'package:clonenetflix/Componentes/buscador.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
@@ -20,11 +21,16 @@ class _NavBarState extends State<NavBar> {
               height: 30,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 250),
+              padding: EdgeInsets.only(left: 230),
             ),
-            Icon(
-              Icons.search_sharp,
-              color: Colors.white,
+            IconButton(
+              icon: Icon(Icons.search_sharp, color: Colors.white),
+              onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Buscador())
+                  );
+                },
             ),
             Padding(
               padding: EdgeInsets.only(left: 20),
