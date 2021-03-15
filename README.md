@@ -1,7 +1,5 @@
 # clonenetflix
-
-A new Flutter project.
-
+Dia  10 de 100 dias de codigo (Flutter)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
