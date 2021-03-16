@@ -21,7 +21,11 @@ class _NavBarState extends State<NavBar> {
               height: 30,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 230),
+              padding: EdgeInsets.only(left: 210),
+            ),
+            Icon(Icons.cast, color: Colors.white),
+            Padding(
+              padding: EdgeInsets.only(left: 10),
             ),
             IconButton(
               icon: Icon(Icons.search_sharp, color: Colors.white),
@@ -33,7 +37,7 @@ class _NavBarState extends State<NavBar> {
                 },
             ),
             Padding(
-              padding: EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: 10),
             ),
             Icon(
               Icons.indeterminate_check_box,
@@ -49,15 +53,15 @@ class _NavBarState extends State<NavBar> {
           children: <Widget>[
             Text(
               'Series',
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
+              style: TextStyle(color: Colors.white, fontSize: 16.0,fontWeight: FontWeight.normal),
             ),
             Text(
               'Peliculas',
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
+              style: TextStyle(color: Colors.white, fontSize: 16.0,fontWeight: FontWeight.normal),
             ),
             Text(
               'Mi lista',
-              style: TextStyle(color: Colors.white, fontSize: 16.0),
+              style: TextStyle(color: Colors.white, fontSize: 16.0,fontWeight: FontWeight.normal),
             )
           ],
         )
