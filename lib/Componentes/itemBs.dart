@@ -11,8 +11,9 @@ class _ItemBuscadorState extends State<ItemBuscador> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.black,
         child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      
       children: <Widget>[
         Image.network(
           'https://e00-marca.uecdn.es/assets/multimedia/imagenes/2021/02/26/16143631973672.jpg',
@@ -22,7 +23,7 @@ class _ItemBuscadorState extends State<ItemBuscador> {
         SizedBox(
           width: 5.0,
         ),
-        Text('Titulo'),
+        Text('Titulo',style: TextStyle(color: Colors.white)),
       ],
     ));
   }

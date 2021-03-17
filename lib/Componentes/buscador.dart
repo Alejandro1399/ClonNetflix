@@ -21,8 +21,7 @@ class _BuscadorState extends State<Buscador> {
         children: <Widget>[
           Padding(padding: EdgeInsets.symmetric(vertical: 10)),
           barrasup(),
-          buscarT(),
-          ItemBuscador()
+          buscarT(),   
         ],
       ),
     );
