@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:clonenetflix/Componentes/itemBs.dart';
 import 'package:flutter/material.dart';
 
 class Buscador extends StatefulWidget {
@@ -20,7 +21,8 @@ class _BuscadorState extends State<Buscador> {
         children: <Widget>[
           Padding(padding: EdgeInsets.symmetric(vertical: 10)),
           barrasup(),
-          buscarT()
+          buscarT(),
+          ItemBuscador()
         ],
       ),
     );
