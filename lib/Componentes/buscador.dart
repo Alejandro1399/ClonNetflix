@@ -1,5 +1,4 @@
 import 'dart:ui';
-import 'package:clonenetflix/Componentes/itemBs.dart';
 import 'package:flutter/material.dart';
 
 class Buscador extends StatefulWidget {
