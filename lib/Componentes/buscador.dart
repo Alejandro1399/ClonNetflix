@@ -32,7 +32,7 @@ Widget buscarT() {
   return Column(
     children: <Widget>[
       Row(
-        children: <Widget>[
+        children: <Widget>[  
           Flexible(
             child: TextField(
               style: TextStyle(color: Colors.white,fontSize: 13,fontWeight: FontWeight.normal),
