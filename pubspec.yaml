@@ -24,8 +24,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
-  http: ^0.12.2
+  # http: ^0.12.2
   omdb_dart: ^0.0.2
+  sqflite: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
