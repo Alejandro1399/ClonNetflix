@@ -14,11 +14,7 @@ class Clone extends StatefulWidget {
 }
 
 class _CloneState extends State<Clone> {
-@override
-void initState() { 
-  super.initState();
-  obtenerP('Avengers');
-}
+  final prueba = obtenerP('Avengers');
   @override
   Widget build(BuildContext context) {
     return Scaffold(

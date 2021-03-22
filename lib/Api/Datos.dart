@@ -6,8 +6,7 @@ Future obtenerP(String Titulo) async {
   final result = await http
       .get(Uri.parse('http://www.omdbapi.com/?t=$Titulo&apikey=ab958a0a&'));
   if (result.statusCode == 200) {
-    respuestaPelisFromJson(result.body);
-    print(result.body);
+    final data = respuestaPelisFromJson(result.body);
   } else {
     throw Exception('Fallo');
   }
