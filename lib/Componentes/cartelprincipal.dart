@@ -1,4 +1,3 @@
-import 'package:clonenetflix/Api/Datos.dart';
 import 'package:clonenetflix/Componentes/barrasup.dart';
 import 'package:flutter/material.dart';
 
