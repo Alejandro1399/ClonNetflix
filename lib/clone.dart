@@ -4,6 +4,8 @@ import 'package:clonenetflix/Componentes/ItemPe.dart';
 import 'package:clonenetflix/Componentes/cartelprincipal.dart';
 import 'package:flutter/material.dart';
 
+import 'Api/Datos.dart';
+
 class Clone extends StatefulWidget {
   Clone({Key key}) : super(key: key);
 
@@ -12,6 +14,11 @@ class Clone extends StatefulWidget {
 }
 
 class _CloneState extends State<Clone> {
+@override
+void initState() { 
+  super.initState();
+  obtenerP('Avengers');
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
