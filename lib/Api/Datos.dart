@@ -1,12 +1,8 @@
 import 'package:omdb_dart/omdb_dart.dart';
 
 void main() {
-  getMovie();
-} 
-
-Future<void> getMovie() async {
   Omdb client = new Omdb("ab958a0a", "Vengadores");
-  await client.getMovie(); // call getMovie to get the all data
+  client.getMovie();
   print("Title : ${client.movie.title}"); // print Title of the movie
   print("Released : ${client.movie.released}"); //print Released Date
   print("Runtime : ${client.movie.runtime}"); //runtime
