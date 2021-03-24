@@ -1,5 +1,9 @@
 import 'dart:ui';
+import 'package:clonenetflix/Api/Peliculas.dart';
+import 'package:clonenetflix/Componentes/itemBs.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Buscador extends StatefulWidget {
   Buscador({Key key}) : super(key: key);
@@ -8,20 +12,50 @@ class Buscador extends StatefulWidget {
   _BuscadorState createState() => _BuscadorState();
 }
 
+List<RespuestaPelis> prueba = <RespuestaPelis>[];
 final buscadorTxt = new TextEditingController();
-String buscarTexto;
+String buscarTexto = '';
 
 class _BuscadorState extends State<Buscador> {
+ 
+  void popularPelis(String tit) async {
+    final movies = await obtenerP(tit);
+    setState(() {
+      prueba = movies;
+    });
+  }
+
+// ignore: non_constant_identifier_names
+  Future<List<RespuestaPelis>> obtenerP(String Titulo) async {
+    final result = await http
+        .get(Uri.parse('http://www.omdbapi.com/?s=$Titulo&apikey=ab958a0a&'));
+    if (result.statusCode == 200) {
+      final data = jsonDecode(result.body);
+      Iterable lista = data["Search"];
+      return lista
+          .map((pelicula) => RespuestaPelis.fromJson(pelicula))
+          .toList();
+    } else {
+      throw Exception('Fallo');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        children: <Widget>[
-          Padding(padding: EdgeInsets.symmetric(vertical: 10)),
-          barrasup(),
-          buscarT(),   
-        ],
+      body: ListView.builder(
+        itemCount: 1,
+        itemBuilder: (BuildContext context, int index) {
+          return Column(
+            children: <Widget>[
+              Padding(padding: EdgeInsets.symmetric(vertical: 10)),
+              barrasup(),
+              buscarT(),
+              ItemBuscador(moviesinfo: prueba),
+            ],
+          );
+        },
       ),
     );
   }
@@ -31,13 +65,15 @@ Widget buscarT() {
   return Column(
     children: <Widget>[
       Row(
-        children: <Widget>[  
+        children: <Widget>[
           Flexible(
             child: TextField(
-              style: TextStyle(color: Colors.white,fontSize: 13,fontWeight: FontWeight.normal),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 13,
+                  fontWeight: FontWeight.normal),
               controller: buscadorTxt,
               decoration: InputDecoration(
-                
                 filled: true,
                 fillColor: Colors.grey[900],
                 suffixIcon: Icon(
@@ -48,7 +84,7 @@ Widget buscarT() {
                   Icons.search_sharp,
                   color: Colors.grey[700],
                 ),
-                hintText: ' Buscar una serie, una peli, un gen... ',
+                hintText: ' Buscar una serie, una peli, un gen...',
                 hintStyle: TextStyle(color: Colors.grey[600], fontSize: 12),
               ),
             ),

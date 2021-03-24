@@ -26,7 +26,8 @@ Widget CartelBB() {
   return Stack(
     children: <Widget>[
       Image.asset('assets/imgs/Breaking bad.jpg', fit: BoxFit.cover),
-      // Image.network('${pelis("Guardianes de la galaxia")}', fit: BoxFit.cover),
+
+      // Image.network('${}', fit: BoxFit.cover),
       Container(
         width: double.infinity,
         height: 280.0,

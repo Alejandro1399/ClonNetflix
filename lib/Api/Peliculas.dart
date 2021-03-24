@@ -1,13 +1,6 @@
 // To parse this JSON data, do
 //
 //     final respuestaPelis = respuestaPelisFromJson(jsonString);
-
-import 'dart:convert';
-
-RespuestaPelis respuestaPelisFromJson(String str) => RespuestaPelis.fromJson(json.decode(str));
-
-String rspuesetaPelisToJson(RespuestaPelis data) => json.encode(data.toJson());
-
 class RespuestaPelis {
     RespuestaPelis({
         this.title,
@@ -78,7 +71,7 @@ class RespuestaPelis {
         country: json["Country"],
         awards: json["Awards"],
         poster: json["Poster"],
-        ratings: List<Rating>.from(json["Ratings"].map((x) => Rating.fromJson(x))),
+        // ratings: List<Rating>.from(json["Ratings"].map((x) => Rating.fromJson(x))),
         metascore: json["Metascore"],
         imdbRating: json["imdbRating"],
         imdbVotes: json["imdbVotes"],
@@ -106,7 +99,7 @@ class RespuestaPelis {
         "Country": country,
         "Awards": awards,
         "Poster": poster,
-        "Ratings": List<dynamic>.from(ratings.map((x) => x.toJson())),
+        // "Ratings": List<dynamic>.from(ratings.map((x) => x.toJson())),
         "Metascore": metascore,
         "imdbRating": imdbRating,
         "imdbVotes": imdbVotes,
