@@ -1,9 +1,9 @@
 import 'dart:ui';
 import 'package:clonenetflix/Api/Peliculas.dart';
+import 'package:clonenetflix/Api/Datos.dart';
+import 'package:flutter/services.dart';
 import 'package:clonenetflix/Componentes/itemBs.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class Buscador extends StatefulWidget {
   Buscador({Key key}) : super(key: key);
@@ -12,32 +12,23 @@ class Buscador extends StatefulWidget {
   _BuscadorState createState() => _BuscadorState();
 }
 
-List<RespuestaPelis> prueba = <RespuestaPelis>[];
 final buscadorTxt = new TextEditingController();
 String buscarTexto = '';
 
+List<RespuestaPelis> listapelis = <RespuestaPelis>[];
+
 class _BuscadorState extends State<Buscador> {
- 
+  @override
+  void initState() {
+    super.initState();
+    popularPelis(buscarTexto == '' ? 'Batman' : buscarTexto);
+  }
+
   void popularPelis(String tit) async {
     final movies = await obtenerP(tit);
     setState(() {
-      prueba = movies;
+      listapelis = movies;
     });
-  }
-
-// ignore: non_constant_identifier_names
-  Future<List<RespuestaPelis>> obtenerP(String Titulo) async {
-    final result = await http
-        .get(Uri.parse('http://www.omdbapi.com/?s=$Titulo&apikey=ab958a0a&'));
-    if (result.statusCode == 200) {
-      final data = jsonDecode(result.body);
-      Iterable lista = data["Search"];
-      return lista
-          .map((pelicula) => RespuestaPelis.fromJson(pelicula))
-          .toList();
-    } else {
-      throw Exception('Fallo');
-    }
   }
 
   @override
@@ -51,48 +42,66 @@ class _BuscadorState extends State<Buscador> {
             children: <Widget>[
               Padding(padding: EdgeInsets.symmetric(vertical: 10)),
               barrasup(),
-              buscarT(),
-              ItemBuscador(moviesinfo: prueba),
+              ite(),
+              if (buscarTexto.length > 0)
+                ItemBuscador(
+                  moviesinfo: listapelis,
+                )
             ],
           );
         },
       ),
     );
   }
-}
 
-Widget buscarT() {
-  return Column(
-    children: <Widget>[
-      Row(
-        children: <Widget>[
-          Flexible(
-            child: TextField(
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 13,
-                  fontWeight: FontWeight.normal),
-              controller: buscadorTxt,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.grey[900],
-                suffixIcon: Icon(
-                  Icons.mic,
-                  color: Colors.grey[700],
+  Column ite() {
+    return Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Flexible(
+              child: TextField(
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 13,
+                    fontWeight: FontWeight.normal),
+                controller: buscadorTxt,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[900],
+                  suffixIcon: Icon(
+                    Icons.mic,
+                    color: Colors.grey[700],
+                  ),
+                  prefixIcon: IconButton(
+                      onPressed: () async {
+                        final movies = await obtenerP(buscadorTxt.text);
+                        // popularPelis(buscarTexto == '' ? 'Batman' : buscarTexto);
+                        setState(() {
+                          buscarTexto = buscadorTxt.text;
+                          SystemChannels.textInput
+                              .invokeMethod('TextInput.hide');
+                          listapelis = movies;
+                          
+                        });
+                        ItemBuscador(
+                            moviesinfo: listapelis,
+                          );
+                      },
+                      icon: Icon(
+                        Icons.search_sharp,
+                        color: Colors.grey[700],
+                      )),
+                  hintText: ' Buscar una serie, una peli, un gen...',
+                  hintStyle: TextStyle(color: Colors.grey[600], fontSize: 12),
                 ),
-                prefixIcon: Icon(
-                  Icons.search_sharp,
-                  color: Colors.grey[700],
-                ),
-                hintText: ' Buscar una serie, una peli, un gen...',
-                hintStyle: TextStyle(color: Colors.grey[600], fontSize: 12),
               ),
             ),
-          ),
-        ],
-      ),
-    ],
-  );
+          ],
+        ),
+      ],
+    );
+  }
 }
 
 Widget barrasup() {
