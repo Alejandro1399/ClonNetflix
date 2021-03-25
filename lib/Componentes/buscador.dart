@@ -21,14 +21,7 @@ class _BuscadorState extends State<Buscador> {
   @override
   void initState() {
     super.initState();
-    popularPelis(buscarTexto == '' ? 'Batman' : buscarTexto);
-  }
-
-  void popularPelis(String tit) async {
-    final movies = await obtenerP(tit);
-    setState(() {
-      listapelis = movies;
-    });
+   
   }
 
   @override
@@ -44,9 +37,19 @@ class _BuscadorState extends State<Buscador> {
               barrasup(),
               ite(),
               if (buscarTexto.length > 0)
-                ItemBuscador(
-                  moviesinfo: listapelis,
-                )
+                FutureBuilder(
+                  future: obtenerP(buscarTexto),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData)
+                      return ItemBuscador(
+                        moviesinfo: snapshot.data,
+                      ); 
+                    else if (snapshot.hasError)
+                      return Center(child:Text('Pelicula no encotrada',style:TextStyle(color: Colors.white, fontSize: 50)));
+                    else
+                      return Center(child: CircularProgressIndicator());
+                  },
+                ),
             ],
           );
         },
@@ -74,19 +77,13 @@ class _BuscadorState extends State<Buscador> {
                     color: Colors.grey[700],
                   ),
                   prefixIcon: IconButton(
-                      onPressed: () async {
-                        final movies = await obtenerP(buscadorTxt.text);
-                        // popularPelis(buscarTexto == '' ? 'Batman' : buscarTexto);
+                      onPressed: (){
                         setState(() {
                           buscarTexto = buscadorTxt.text;
                           SystemChannels.textInput
                               .invokeMethod('TextInput.hide');
-                          listapelis = movies;
-                          
                         });
-                        ItemBuscador(
-                            moviesinfo: listapelis,
-                          );
+                        
                       },
                       icon: Icon(
                         Icons.search_sharp,
