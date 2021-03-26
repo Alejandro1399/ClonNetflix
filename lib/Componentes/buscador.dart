@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:clonenetflix/Api/Peliculas.dart';
 import 'package:clonenetflix/Api/Datos.dart';
 import 'package:flutter/services.dart';
-import 'package:clonenetflix/Componentes/itemBs.dart';
+import 'package:clonenetflix/Modelos/itemBs.dart';
 import 'package:flutter/material.dart';
 
 class Buscador extends StatefulWidget {

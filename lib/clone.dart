@@ -1,6 +1,6 @@
 import 'package:clonenetflix/Componentes/Avances.dart';
-import 'package:clonenetflix/Componentes/ItemAv.dart';
-import 'package:clonenetflix/Componentes/ItemPe.dart';
+import 'package:clonenetflix/Modelos/ItemAv.dart';
+import 'package:clonenetflix/Modelos/ItemPe.dart';
 import 'package:clonenetflix/Componentes/cartelprincipal.dart';
 import 'package:flutter/material.dart';
 
