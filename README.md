@@ -1,5 +1,7 @@
 # clonenetflix
-Dia  10 de 100 dias de codigo (Flutter)
+Dia  13 de 100 dias de codigo (Flutter)
+del dia 1 a 10 hice la interfaz de netlfix 
+del dia 10 al 13 conecte la interfaz con una api-rest de Ombd
 ## Getting Started
 
 This project is a starting point for a Flutter application.
