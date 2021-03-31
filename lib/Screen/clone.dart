@@ -5,6 +5,7 @@ import 'package:clonenetflix/Componentes/cartelprincipal.dart';
 import 'package:flutter/material.dart';
 
 class Clone extends StatefulWidget {
+  
   Clone({Key key}) : super(key: key);
 
   @override
