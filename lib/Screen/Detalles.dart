@@ -17,7 +17,8 @@ class Detalles extends StatelessWidget {
             return Column(
               children: <Widget>[
                 Padding(padding: EdgeInsets.all(20)),
-                cartel(snapshot)],
+                cartel(snapshot),
+              ],
             );
           else if (snapshot.hasError)
             return Center(
@@ -47,11 +48,17 @@ class Detalles extends StatelessWidget {
                 colors: <Color>[Colors.black26, Colors.black87]),
           ),
         ),
-        SafeArea(child:  Image.asset(
-              'assets/imgs/logo.png',
-              width: 35,
-              height: 35,
-            ),)
+        SafeArea(
+          child: Row(
+            children: [
+              Image.asset(
+                'assets/imgs/logo.png',
+                width: 35,
+                height: 35,
+              ),
+            ],
+          ),
+        )
       ],
     );
   }
