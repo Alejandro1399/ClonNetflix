@@ -37,7 +37,6 @@ class Detalles extends StatelessWidget {
           snapshot.data.poster,
           fit: BoxFit.cover,
           width: double.infinity,
-          
         ),
         Container(
           width: double.infinity,
