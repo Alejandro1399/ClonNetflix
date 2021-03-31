@@ -1,4 +1,4 @@
-import 'package:clonenetflix/Componentes/buscador.dart';
+import 'package:clonenetflix/Screen/buscador.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatefulWidget {
