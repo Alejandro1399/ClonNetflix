@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:clonenetflix/Modelos/itemBs.dart';
 import 'package:flutter/material.dart';
 
+import 'Detalles.dart';
+
 class Buscador extends StatefulWidget {
   Buscador({Key key}) : super(key: key);
 
@@ -21,7 +23,11 @@ class _BuscadorState extends State<Buscador> {
   @override
   void initState() {
     super.initState();
-   
+  }
+
+  void detalles(RespuestaPelis item) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Detalles( nombre: item.imdbId ,poster: item.poster ,)));
   }
 
   @override
@@ -43,9 +49,13 @@ class _BuscadorState extends State<Buscador> {
                     if (snapshot.hasData)
                       return ItemBuscador(
                         moviesinfo: snapshot.data,
-                      ); 
+                        click: detalles,
+                      );
                     else if (snapshot.hasError)
-                      return Center(child:Text('Pelicula no encotrada',style:TextStyle(color: Colors.white, fontSize: 50)));
+                      return Center(
+                          child: Text('Pelicula no encotrada',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 50)));
                     else
                       return Center(child: CircularProgressIndicator());
                   },
@@ -77,13 +87,11 @@ class _BuscadorState extends State<Buscador> {
                     color: Colors.grey[700],
                   ),
                   prefixIcon: IconButton(
-                      onPressed: (){
+                      onPressed: () {
                         setState(() {
                           buscarTexto = buscadorTxt.text;
-                          SystemChannels.textInput
-                              .invokeMethod('TextInput.hide');
                         });
-                        
+                        SystemChannels.textInput.invokeMethod('TextInput.hide');
                       },
                       icon: Icon(
                         Icons.search_sharp,
